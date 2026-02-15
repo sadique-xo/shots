@@ -6,7 +6,7 @@
 
 Shots is a free, browser-based tool designed to help developers and designers create beautiful, portfolio-ready mockups for Dribbble, Behance, Twitter, and Instagram. Nosignup required, no watermarks, just pure creativity.
 
-![Shots Preview](./public/og-image.png)
+![Shots Preview](./public/images/shots-Social-Image.webp)
 
 ## Features
 
