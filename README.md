@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shots
+
+**Create stunning Dribbble shots in seconds.**
+
+[shots.sadique.co](https://shots.sadique.co)
+
+Shots is a free, browser-based tool designed to help developers and designers create beautiful, portfolio-ready mockups for Dribbble, Behance, Twitter, and Instagram. Nosignup required, no watermarks, just pure creativity.
+
+![Shots Preview](./public/og-image.png)
+
+## Features
+
+- **🎨 6 Background Styles**: Choose from Gradients, Mesh Gradients, Noise, Patterns, Solids, and more.
+- **📱 Device Frames**: Wrap your screenshots in realistic browser windows, phones, tablets, or laptops.
+- **📐 Multiple Sizes**: One-click presets for Dribbble, Behance, Twitter, Instagram, and custom dimensions.
+- **✨ 3D Perspective**: Add depth with 3D RotateX and RotateY transforms.
+- **🚀 100% Free**: No paywalls, no watermarks, unlimited exports.
+
+## About Sadique.co
+
+Shots is part of the **Sadique.co** design ecosystem.
+
+[Sadique.co](https://sadique.co) is a portfolio and digital garden by **Sadique**, focused on building high-quality, open-source tools for the creative community. We believe in crafting software that feels magical to use.
+
+Check out more projects at [sadique.co](https://sadique.co).
+
+## Tech Stack
+
+Built with modern web technologies for performance and experience:
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Animations**: [React Bits](https://reactbits.dev/) & [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
 ## Getting Started
 
-First, run the development server:
+To run Shots locally:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sadique-xo/shots.git
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT © [Sadique](https://sadique.co)
