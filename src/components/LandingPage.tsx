@@ -7,10 +7,11 @@ import { ShinyText } from "@/components/reactbits/ShinyText";
 import { DecryptedText } from "@/components/reactbits/DecryptedText";
 import { StarBorder } from "@/components/reactbits/StarBorder";
 import { SplitText } from "@/components/reactbits/SplitText";
+import { Camera, Palette, Download, Smartphone, Ruler, Sparkles, Aperture } from "lucide-react";
 
 export function LandingPage() {
     return (
-        <div className="min-h-screen relative overflow-hidden flex flex-col bg-[#09090b]">
+        <div className="dark min-h-screen relative overflow-hidden flex flex-col bg-[#09090b] text-foreground">
             {/* Waves background — covers entire hero */}
             <div className="absolute inset-0 z-0">
                 <Waves
@@ -46,7 +47,7 @@ export function LandingPage() {
                     >
                         shots
                     </GradientText>
-                    <span className="text-muted-foreground/60 text-sm font-medium">.sadique.co</span>
+                    <Aperture className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex items-center gap-4">
                     <a
@@ -150,19 +151,19 @@ export function LandingPage() {
                         {[
                             {
                                 step: "01",
-                                icon: "📸",
+                                icon: <Camera className="w-7 h-7 text-primary" />,
                                 title: "Upload",
                                 desc: "Drag and drop your screenshot or paste from clipboard. Supports PNG, JPG, and WebP.",
                             },
                             {
                                 step: "02",
-                                icon: "🎨",
+                                icon: <Palette className="w-7 h-7 text-primary" />,
                                 title: "Style",
                                 desc: "Choose from gradients, solids, mesh, noise, or pattern backgrounds. Add device frames and 3D perspective.",
                             },
                             {
                                 step: "03",
-                                icon: "⬇️",
+                                icon: <Download className="w-7 h-7 text-primary" />,
                                 title: "Export",
                                 desc: "Download pixel-perfect PNGs sized for Dribbble, Behance, Twitter, Instagram, or custom dimensions.",
                             },
@@ -172,7 +173,7 @@ export function LandingPage() {
                                 className="group relative p-6 rounded-2xl border border-border/30 bg-card/10 backdrop-blur-sm hover:bg-card/25 transition-all duration-300 hover:border-primary/30"
                             >
                                 <div className="flex items-center gap-3 mb-4">
-                                    <span className="text-3xl">{item.icon}</span>
+                                    <span className="flex items-center">{item.icon}</span>
                                     <div>
                                         <span className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-mono">Step {item.step}</span>
                                         <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
@@ -190,16 +191,16 @@ export function LandingPage() {
                 <div className="max-w-4xl mx-auto">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
-                            { icon: "🎨", label: "6 Background Types", desc: "Gradients, mesh, patterns, noise" },
-                            { icon: "📱", label: "Device Frames", desc: "Browser, phone, tablet, laptop" },
-                            { icon: "📐", label: "Multiple Sizes", desc: "Dribbble, Behance, Twitter, IG" },
-                            { icon: "✨", label: "3D Perspective", desc: "RotateX, RotateY transforms" },
+                            { icon: <Palette className="w-5 h-5 text-primary" />, label: "6 Background Types", desc: "Gradients, mesh, patterns, noise" },
+                            { icon: <Smartphone className="w-5 h-5 text-primary" />, label: "Device Frames", desc: "Browser, phone, tablet, laptop" },
+                            { icon: <Ruler className="w-5 h-5 text-primary" />, label: "Multiple Sizes", desc: "Dribbble, Behance, Twitter, IG" },
+                            { icon: <Sparkles className="w-5 h-5 text-primary" />, label: "3D Perspective", desc: "RotateX, RotateY transforms" },
                         ].map((feature, i) => (
                             <div
                                 key={i}
                                 className="flex flex-col items-center gap-2 p-4 rounded-xl border border-border/20 bg-card/10 backdrop-blur-sm hover:bg-card/20 transition-all duration-300"
                             >
-                                <span className="text-2xl">{feature.icon}</span>
+                                <span className="flex items-center justify-center">{feature.icon}</span>
                                 <span className="text-xs font-semibold text-foreground text-center">{feature.label}</span>
                                 <span className="text-[10px] text-muted-foreground text-center">{feature.desc}</span>
                             </div>

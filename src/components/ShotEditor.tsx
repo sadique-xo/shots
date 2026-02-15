@@ -9,6 +9,7 @@ import { Canvas } from "@/components/Canvas";
 export function ShotEditor() {
     const [state, setState] = useState<EditorState>(DEFAULT_STATE);
     const [isExporting, setIsExporting] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
     const canvasRef = useRef<HTMLDivElement>(null);
 
     const updateState = useCallback(<K extends keyof EditorState>(key: K, value: EditorState[K]) => {
@@ -16,9 +17,14 @@ export function ShotEditor() {
     }, []);
 
     const handleImageUpload = useCallback((file: File) => {
+        setIsUploading(true);
         const reader = new FileReader();
         reader.onload = (e) => {
-            updateState("image", e.target?.result as string);
+            // Simulate a small delay for better UX
+            setTimeout(() => {
+                updateState("image", e.target?.result as string);
+                setIsUploading(false);
+            }, 800);
         };
         reader.readAsDataURL(file);
     }, [updateState]);
@@ -80,12 +86,18 @@ export function ShotEditor() {
                                 }}
                             />
                             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                    <polyline points="17 8 12 3 7 8" />
-                                    <line x1="12" y1="3" x2="12" y2="15" />
-                                </svg>
-                                Upload
+                                {isUploading ? (
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-spin">
+                                        <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="32" />
+                                    </svg>
+                                ) : (
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="17 8 12 3 7 8" />
+                                        <line x1="12" y1="3" x2="12" y2="15" />
+                                    </svg>
+                                )}
+                                {isUploading ? "Uploading..." : "Upload"}
                             </span>
                         </label>
                         {state.image && (
@@ -104,7 +116,7 @@ export function ShotEditor() {
 
                     <button
                         onClick={handleExport}
-                        disabled={isExporting}
+                        disabled={isExporting || isUploading}
                         className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {isExporting ? (
@@ -127,6 +139,7 @@ export function ShotEditor() {
                     ref={canvasRef}
                     state={state}
                     onImageUpload={handleImageUpload}
+                    isUploading={isUploading}
                 />
             </div>
         </div>

@@ -280,3 +280,8 @@ html {
 .animation-delay-1000 {
   animation-delay: 1000ms;
 }
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}

@@ -10,12 +10,16 @@ export async function exportShot(
         const dataUrl = await toPng(element, {
             width,
             height,
-            pixelRatio: 1,
+            pixelRatio: 2, // Better quality
             style: {
                 transform: `scale(${width / element.offsetWidth})`,
                 transformOrigin: "top left",
                 width: `${element.offsetWidth}px`,
                 height: `${element.offsetHeight}px`,
+                margin: "0",
+                padding: "0",
+                border: "none",
+                boxShadow: "none", // Ensure container shadow doesn't leak
             },
         });
 

@@ -6,6 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
+import { Square, Globe, Smartphone, Tablet, Laptop } from "lucide-react";
 
 interface SidebarProps {
     state: EditorState;
@@ -64,12 +65,12 @@ const PATTERN_TYPES: { value: PatternType; label: string }[] = [
     { value: "waves", label: "Waves" },
 ];
 
-const FRAME_TYPES: { value: DeviceFrame; label: string; icon: string }[] = [
-    { value: "none", label: "None", icon: "◻" },
-    { value: "browser", label: "Browser", icon: "🌐" },
-    { value: "phone", label: "Phone", icon: "📱" },
-    { value: "tablet", label: "Tablet", icon: "📋" },
-    { value: "laptop", label: "Laptop", icon: "💻" },
+const FRAME_TYPES: { value: DeviceFrame; label: string; icon: React.ReactNode }[] = [
+    { value: "none", label: "None", icon: <Square className="w-4 h-4" /> },
+    { value: "browser", label: "Browser", icon: <Globe className="w-4 h-4" /> },
+    { value: "phone", label: "Phone", icon: <Smartphone className="w-4 h-4" /> },
+    { value: "tablet", label: "Tablet", icon: <Tablet className="w-4 h-4" /> },
+    { value: "laptop", label: "Laptop", icon: <Laptop className="w-4 h-4" /> },
 ];
 
 export function Sidebar({ state, updateState, onPresetSelect, onImageUpload }: SidebarProps) {
@@ -77,14 +78,8 @@ export function Sidebar({ state, updateState, onPresetSelect, onImageUpload }: S
 
     const sidebarContent = (
         <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-                <div className="flex items-center gap-2">
-                    <span className="text-primary font-bold text-lg">shots</span>
-                    <span className="text-muted-foreground text-sm">.sadique.co</span>
-                </div>
-                <ThemeToggle />
-            </div>
+            {/* Header removed - moved to top nav */}
+            <div className="pt-2" />
 
             {/* Scrollable content */}
             <div className="flex-1 overflow-y-auto p-4 space-y-5">
@@ -97,8 +92,8 @@ export function Sidebar({ state, updateState, onPresetSelect, onImageUpload }: S
                                 key={preset.name}
                                 onClick={() => updateState("shotPreset", preset)}
                                 className={`text-xs px-2.5 py-1.5 rounded-md transition-all duration-150 font-medium ${state.shotPreset.name === preset.name
-                                        ? "bg-primary text-primary-foreground shadow-sm"
-                                        : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                                    ? "bg-primary text-primary-foreground shadow-sm"
+                                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                                     }`}
                             >
                                 {preset.label}
@@ -148,8 +143,8 @@ export function Sidebar({ state, updateState, onPresetSelect, onImageUpload }: S
                                 key={bg.value}
                                 onClick={() => updateState("backgroundType", bg.value)}
                                 className={`text-xs px-2 py-1.5 rounded-md transition-all duration-150 font-medium ${state.backgroundType === bg.value
-                                        ? "bg-primary text-primary-foreground"
-                                        : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                                    ? "bg-primary text-primary-foreground"
+                                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                                     }`}
                             >
                                 {bg.label}
@@ -236,14 +231,16 @@ export function Sidebar({ state, updateState, onPresetSelect, onImageUpload }: S
                     {/* Pattern type */}
                     {state.backgroundType === "pattern" && (
                         <div className="space-y-2">
+                            <div className="my-3 border-t border-border" />
+                            <Label className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2 block">Pattern Style</Label>
                             <div className="grid grid-cols-3 gap-1.5">
                                 {PATTERN_TYPES.map((p) => (
                                     <button
                                         key={p.value}
                                         onClick={() => updateState("patternType", p.value)}
                                         className={`text-xs px-2 py-1.5 rounded-md transition-all duration-150 ${state.patternType === p.value
-                                                ? "bg-primary text-primary-foreground"
-                                                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                                            ? "bg-primary text-primary-foreground"
+                                            : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                                             }`}
                                     >
                                         {p.label}
@@ -404,8 +401,8 @@ export function Sidebar({ state, updateState, onPresetSelect, onImageUpload }: S
                                 key={f.value}
                                 onClick={() => updateState("deviceFrame", f.value)}
                                 className={`flex flex-col items-center gap-1 px-1 py-2 rounded-md transition-all duration-150 text-xs ${state.deviceFrame === f.value
-                                        ? "bg-primary text-primary-foreground"
-                                        : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                                    ? "bg-primary text-primary-foreground"
+                                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                                     }`}
                             >
                                 <span className="text-base">{f.icon}</span>

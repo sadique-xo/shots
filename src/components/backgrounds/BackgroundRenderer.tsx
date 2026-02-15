@@ -15,7 +15,7 @@ interface BackgroundRendererProps {
 }
 
 function getPatternSVG(type: PatternType, color: string): string {
-    const c = encodeURIComponent(color);
+    const c = color;
     switch (type) {
         case "dots":
             return `<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1.5" fill="${c}" opacity="0.4"/></svg>`;
@@ -116,7 +116,7 @@ export function BackgroundRenderer({
                 <div
                     className="absolute inset-0"
                     style={{
-                        backgroundImage: `url("data:image/svg+xml,${getPatternSVG(patternType, patternColor)}")`,
+                        backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(getPatternSVG(patternType, patternColor))}")`,
                         backgroundRepeat: "repeat",
                     }}
                 />

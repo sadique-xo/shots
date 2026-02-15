@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { ShotEditor } from "@/components/ShotEditor";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { Aperture } from "lucide-react";
 
 export default function EditPage() {
     return (
@@ -9,23 +11,27 @@ export default function EditPage() {
             {/* Editor header */}
             <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-30">
                 <div className="flex items-center justify-between px-4 lg:px-6 h-14">
-                    <Link href="/" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
+                    <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                         <span className="text-primary font-bold text-lg tracking-tight">shots</span>
-                        <span className="text-muted-foreground text-sm font-medium">.sadique.co</span>
+                        <Aperture className="w-5 h-5 text-primary" />
                     </Link>
-                    <div className="hidden md:flex flex-col items-center">
-                        <p className="text-xs text-muted-foreground">
-                            Upload, style, and export — all in your browser
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block text-center">
+                        <p className="text-xs text-muted-foreground whitespace-nowrap">
+                            Upload, style, and export • all in your browser (by{" "}
+                            <a
+                                href="https://sadique.co"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-medium hover:text-primary transition-colors"
+                            >
+                                Sadique
+                            </a>
+                            )
                         </p>
                     </div>
-                    <a
-                        href="https://sadique.co"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-muted-foreground hover:text-primary transition-colors"
-                    >
-                        by <span className="font-medium">Sadique</span>
-                    </a>
+                    <div className="ml-4 pl-4 border-l border-border/50">
+                        <AnimatedThemeToggler />
+                    </div>
                 </div>
             </header>
 

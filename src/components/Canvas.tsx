@@ -6,13 +6,16 @@ import { EditorState } from "@/lib/presets";
 import { BackgroundRenderer } from "@/components/backgrounds/BackgroundRenderer";
 import { FrameRenderer } from "@/components/frames/FrameRenderer";
 
+import { Loader2 } from "lucide-react";
+
 interface CanvasProps {
     state: EditorState;
     onImageUpload: (file: File) => void;
+    isUploading?: boolean;
 }
 
 export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(
-    function Canvas({ state, onImageUpload }, ref) {
+    function Canvas({ state, onImageUpload, isUploading = false }, ref) {
         const onDrop = useCallback(
             (acceptedFiles: File[]) => {
                 if (acceptedFiles[0]) {
@@ -69,6 +72,14 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(
                     >
                         {!state.image && <input {...getInputProps()} />}
 
+                        {/* Upload Loader Overlay */}
+                        {isUploading && (
+                            <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-background/50 backdrop-blur-sm transition-opacity duration-200">
+                                <Loader2 className="w-10 h-10 text-primary animate-spin mb-3" />
+                                <p className="text-sm font-medium text-foreground">Uploading...</p>
+                            </div>
+                        )}
+
                         {/* Background */}
                         <BackgroundRenderer
                             type={state.backgroundType}
@@ -116,8 +127,8 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(
                                 <div
                                     {...getRootProps()}
                                     className={`flex flex-col items-center justify-center gap-3 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-200 w-3/4 h-3/4 ${isDragActive
-                                            ? "border-primary bg-primary/10"
-                                            : "border-white/20 hover:border-white/40"
+                                        ? "border-primary bg-primary/10"
+                                        : "border-white/20 hover:border-white/40"
                                         }`}
                                 >
                                     <input {...getInputProps()} />
