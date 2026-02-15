@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "Shots — Create Stunning Dribbble Shots in Seconds",
   description:
     "Free tool to generate beautifully styled Dribbble shots. Upload your screenshot, pick a style, and export pixel-perfect PNGs. No signup required.",
+  icons: {
+    icon: "/images/camera-icon.png",
+    shortcut: "/images/camera-icon.png",
+    apple: "/images/camera-icon.png",
+  },
   keywords: ["dribbble", "shots", "mockup", "design", "screenshot", "generator"],
   authors: [{ name: "Sadique", url: "https://sadique.co" }],
   openGraph: {

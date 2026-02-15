@@ -84,7 +84,7 @@ export function LandingPage() {
                         className="justify-center"
                         delay={0.1}
                         duration={0.03}
-                        splitType="chars"
+                        splitType="words"
                         from={{ opacity: 0, y: 40 }}
                         to={{ opacity: 1, y: 0 }}
                     />
